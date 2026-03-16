@@ -1,0 +1,44 @@
+forbidden_forest:
+  name: "Forbidden Forest"
+  world: world
+  min:
+    x: -500
+    y: 0
+    z: 200
+  max:
+    x: -200
+    y: 256
+    z: 500
+  enter_message: "§4⚠ You enter the Forbidden Forest. Rare creatures lurk in the shadows."
+  mob_table: forbidden_forest_mobs
+  ambient_effect: DARKNESS
+
+ancient_ruins_zone:
+  name: "Ancient Wizard Ruins"
+  world: world
+  min:
+    x: 300
+    y: 0
+    z: -500
+  max:
+    x: 600
+    y: 256
+    z: -200
+  enter_message: "§5✦ Ancient magic saturates the air. Secrets of old mages await."
+  mob_table: ruins_world_mobs
+  ambient_effect: ""
+
+mana_storm_zone:
+  name: "Mana Storm Crater"
+  world: world
+  min:
+    x: -100
+    y: 0
+    z: -100
+  max:
+    x: 100
+    y: 256
+    z: 100
+  enter_message: "§d⚡ Volatile mana crackles around you. Expect the unexpected."
+  mob_table: storm_mobs
+  ambient_effect: ""

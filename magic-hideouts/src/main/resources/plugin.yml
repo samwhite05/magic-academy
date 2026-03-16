@@ -1,0 +1,17 @@
+name: MagicHideouts
+version: ${version}
+main: gg.magic.academy.hideouts.MagicHideouts
+api-version: '1.21'
+description: Personal hideout worlds and module progression for Magic Academy RPG.
+authors: [MagicAcademyDev]
+depend: [MagicCore, MagicItems]
+commands:
+  hideout:
+    description: Visit your personal hideout or open upgrade menu.
+    usage: /hideout [upgrade|artifacts|leave]
+    permission: magic.hideout.use
+    permission-message: ""
+permissions:
+  magic.hideout.use:
+    description: Allows players to use hideout commands.
+    default: true

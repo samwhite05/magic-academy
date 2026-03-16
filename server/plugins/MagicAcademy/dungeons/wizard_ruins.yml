@@ -1,0 +1,21 @@
+id: wizard_ruins
+name: "Ancient Wizard Ruins"
+theme: RUINS
+difficulty_base: 1
+required_rank: STUDENT
+rooms:
+  - type: PUZZLE
+    config: ruins_puzzle_1
+  - type: MOB_WAVE
+    mythicmobs_pack: RuinsZombieMage
+    wave_count: 3
+  - type: MINIBOSS
+    mythicmobs_mob: RuinsGolem
+  - type: BOSS
+    mythicmobs_mob: LichForgottenLibrary
+  - type: TREASURE
+    loot_table: ruins_treasure
+scale:
+  solo_hp_mult: 0.6
+  party_hp_mult: 1.0
+  per_extra_player_add: 0.3

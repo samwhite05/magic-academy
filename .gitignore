@@ -1,0 +1,15 @@
+.gradle/
+build/
+*/build/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+.idea/
+*.iml
+server/world/
+server/world_nether/
+server/world_the_end/
+server/logs/
+server/cache/
+server/plugins/*/
+!server/plugins/MagicAcademy/
+server/session.lock

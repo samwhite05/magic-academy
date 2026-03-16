@@ -1,0 +1,40 @@
+crystal_treasure:
+  rolls: 4
+  guaranteed_chance: 0.9
+  entries:
+    - item: mana_crystal
+      min: 3
+      max: 7
+      weight: 35
+    - item: ghost_dust
+      min: 1
+      max: 3
+      weight: 25
+    - item: ice_element
+      min: 1
+      max: 1
+      weight: 15
+    - item: slow_effect
+      min: 1
+      max: 1
+      weight: 12
+    - item: none_effect
+      min: 1
+      max: 1
+      weight: 10
+    - item: nova_shape
+      min: 1
+      max: 1
+      weight: 8
+    - item: shield_break_effect
+      min: 1
+      max: 1
+      weight: 8
+    - item: phoenix_feather
+      min: 1
+      max: 2
+      weight: 10
+    - item: necromancy_rune
+      min: 1
+      max: 1
+      weight: 3

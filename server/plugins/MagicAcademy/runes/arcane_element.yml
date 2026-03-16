@@ -1,0 +1,5 @@
+id: arcane_element
+name: "Arcane Rune"
+type: ELEMENT
+power_tier: 1
+custom_model_data: 1003

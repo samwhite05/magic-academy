@@ -1,0 +1,5 @@
+id: nova_shape
+name: "Nova Rune"
+type: SHAPE
+power_tier: 1
+custom_model_data: 1012

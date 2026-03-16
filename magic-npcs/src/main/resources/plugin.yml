@@ -1,0 +1,25 @@
+name: MagicNpcs
+version: ${version}
+main: gg.magic.academy.npcs.MagicNpcs
+api-version: '1.21'
+description: Lightweight custom NPCs, dialogue trees, and vendor menus for Magic Academy RPG.
+authors: [MagicAcademyDev]
+depend: [MagicCore]
+commands:
+  magic_dialogue:
+    description: Internal dialogue navigation command (do not run manually)
+    usage: /magic_dialogue <dialogue_id> <node_id>
+    permission: magic.dialogue.use
+    permission-message: ""
+  npcs:
+    description: Admin NPC controls (spawn, despawn, reload)
+    usage: /npcs <spawnall|despawn|reload|list>
+    permission: magic.npcs.admin
+    permission-message: ""
+permissions:
+  magic.dialogue.use:
+    description: Allows players to use internal dialogue navigation.
+    default: true
+  magic.npcs.admin:
+    description: Allows admin NPC controls.
+    default: op

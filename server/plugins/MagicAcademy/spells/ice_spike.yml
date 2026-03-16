@@ -1,0 +1,36 @@
+id: ice_spike
+name: "Ice Spike"
+element: ICE
+shape: PROJECTILE
+effect: SLOW
+tiers:
+  1:
+    description: "A spike of ice that slows the target on hit."
+    mana_cost: 11
+    cooldown_ms: 2000
+    mythicmobs_skill: "IceSpikeT1"
+  2:
+    description: "Spike shatters on impact into 3 shards."
+    mana_cost: 15
+    cooldown_ms: 2200
+    mythicmobs_skill: "IceSpikeT2"
+  3:
+    description: "Target is frozen in place for 2 seconds."
+    mana_cost: 20
+    cooldown_ms: 2500
+    mythicmobs_skill: "IceSpikeT3"
+  4:
+    description: "A blizzard of spikes erupts from the impact point."
+    mana_cost: 28
+    cooldown_ms: 3000
+    mythicmobs_skill: "IceSpikeT4"
+upgrade_costs:
+  2:
+    mana_crystal: 4
+    void_mushroom: 2
+  3:
+    mana_crystal: 10
+    void_mushroom: 6
+  4:
+    mana_crystal: 18
+    ghost_dust: 4

@@ -1,0 +1,5 @@
+id: ice_element
+name: "Ice Rune"
+type: ELEMENT
+power_tier: 1
+custom_model_data: 1002

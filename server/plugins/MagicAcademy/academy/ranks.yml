@@ -1,0 +1,44 @@
+# Rank advancement gates
+# Players must meet all conditions and pass the trial to advance
+
+APPRENTICE:
+  required_dungeon_clears:
+    - wizard_ruins
+  required_spells:
+    - firebolt
+  required_discoveries: 1
+  trial: trial_apprentice_elemental
+
+MAGE:
+  required_dungeon_clears:
+    - wizard_ruins
+    - crystal_caverns
+  required_spells:
+    - firebolt
+    - ice_spike
+  required_discoveries: 3
+  trial: trial_mage_dual
+
+MASTER_MAGE:
+  required_dungeon_clears:
+    - wizard_ruins
+    - crystal_caverns
+  required_spells:
+    - firebolt
+    - ice_spike
+    - mana_shield
+    - arcane_push
+  required_discoveries: 6
+  trial: trial_master_arcane_titan
+
+ARCHMAGE:
+  required_dungeon_clears:
+    - wizard_ruins
+    - crystal_caverns
+  required_spells:
+    - firebolt
+    - ice_spike
+    - mana_shield
+    - arcane_push
+  required_discoveries: 10
+  trial: trial_archmage_lich_council

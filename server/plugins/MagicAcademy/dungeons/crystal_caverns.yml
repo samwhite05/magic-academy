@@ -1,0 +1,24 @@
+id: crystal_caverns
+name: "Crystal Caverns"
+theme: CAVERN
+difficulty_base: 2
+required_rank: APPRENTICE
+rooms:
+  - type: PUZZLE
+    config: crystal_pressure_puzzle
+  - type: MOB_WAVE
+    mythicmobs_pack: CrystalGolem
+    wave_count: 2
+  - type: MOB_WAVE
+    mythicmobs_pack: CrystalBat
+    wave_count: 3
+  - type: MINIBOSS
+    mythicmobs_mob: CrystalKnight
+  - type: BOSS
+    mythicmobs_mob: CrystalDragonling
+  - type: TREASURE
+    loot_table: crystal_treasure
+scale:
+  solo_hp_mult: 0.65
+  party_hp_mult: 1.0
+  per_extra_player_add: 0.35

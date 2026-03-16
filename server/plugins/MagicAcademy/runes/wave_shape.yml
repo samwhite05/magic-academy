@@ -1,0 +1,5 @@
+id: wave_shape
+name: "Wave Rune"
+type: SHAPE
+power_tier: 1
+custom_model_data: 1011

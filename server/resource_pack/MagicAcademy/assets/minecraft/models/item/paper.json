@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/paper"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1001
+      },
+      "model": "magicacademy/item/fire_element"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1002
+      },
+      "model": "magicacademy/item/ice_element"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1003
+      },
+      "model": "magicacademy/item/arcane_element"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1010
+      },
+      "model": "magicacademy/item/projectile_shape"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1011
+      },
+      "model": "magicacademy/item/wave_shape"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1012
+      },
+      "model": "magicacademy/item/nova_shape"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1020
+      },
+      "model": "magicacademy/item/slow_effect"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1021
+      },
+      "model": "magicacademy/item/shield_break_effect"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1022
+      },
+      "model": "magicacademy/item/none_effect"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 1030
+      },
+      "model": "magicacademy/item/necromancy_rune"
+    }
+  ]
+}

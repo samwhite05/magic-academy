@@ -1,0 +1,40 @@
+ruins_treasure:
+  rolls: 4
+  guaranteed_chance: 0.85
+  entries:
+    - item: mana_crystal
+      min: 2
+      max: 5
+      weight: 40
+    - item: void_mushroom
+      min: 1
+      max: 3
+      weight: 30
+    - item: fire_element
+      min: 1
+      max: 1
+      weight: 15
+    - item: projectile_shape
+      min: 1
+      max: 1
+      weight: 10
+    - item: none_effect
+      min: 1
+      max: 1
+      weight: 12
+    - item: arcane_element
+      min: 1
+      max: 1
+      weight: 10
+    - item: wave_shape
+      min: 1
+      max: 1
+      weight: 8
+    - item: necromancy_rune
+      min: 1
+      max: 1
+      weight: 3
+    - item: dark_spell_tome
+      min: 1
+      max: 1
+      weight: 2

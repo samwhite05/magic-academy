@@ -1,0 +1,7 @@
+name: MagicCore
+version: ${version}
+main: gg.magic.academy.core.MagicCore
+api-version: '1.21'
+description: Core data, mana, and stat system for Magic Academy RPG.
+authors: [MagicAcademyDev]
+softdepend: [PlaceholderAPI]

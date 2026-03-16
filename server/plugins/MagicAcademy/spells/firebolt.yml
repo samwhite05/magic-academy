@@ -1,0 +1,36 @@
+id: firebolt
+name: "Firebolt"
+element: FIRE
+shape: PROJECTILE
+effect: NONE
+tiers:
+  1:
+    description: "A basic bolt of fire hurtles toward your target."
+    mana_cost: 10
+    cooldown_ms: 1500
+    mythicmobs_skill: "FireboltT1"
+  2:
+    description: "The bolt explodes on impact, dealing area damage."
+    mana_cost: 14
+    cooldown_ms: 1600
+    mythicmobs_skill: "FireboltT2"
+  3:
+    description: "Leaves a patch of burning ground where it lands."
+    mana_cost: 18
+    cooldown_ms: 1800
+    mythicmobs_skill: "FireboltT3"
+  4:
+    description: "Chains between up to 3 nearby enemies."
+    mana_cost: 24
+    cooldown_ms: 2200
+    mythicmobs_skill: "FireboltT4"
+upgrade_costs:
+  2:
+    void_mushroom: 5
+    mana_crystal: 3
+  3:
+    phoenix_feather: 2
+    mana_crystal: 8
+  4:
+    ghost_dust: 5
+    phoenix_feather: 5

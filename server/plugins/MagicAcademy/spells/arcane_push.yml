@@ -1,0 +1,35 @@
+id: arcane_push
+name: "Arcane Push"
+element: ARCANE
+shape: WAVE
+effect: NONE
+tiers:
+  1:
+    description: "A burst of arcane energy pushes enemies away."
+    mana_cost: 12
+    cooldown_ms: 3000
+    mythicmobs_skill: "ArcanePushT1"
+  2:
+    description: "Wider wave that hits enemies in a wider arc."
+    mana_cost: 16
+    cooldown_ms: 2800
+    mythicmobs_skill: "ArcanePushT2"
+  3:
+    description: "Pushed enemies take fall damage on landing."
+    mana_cost: 20
+    cooldown_ms: 2600
+    mythicmobs_skill: "ArcanePushT3"
+  4:
+    description: "Creates a persistent shockwave ring that lingers."
+    mana_cost: 28
+    cooldown_ms: 3500
+    mythicmobs_skill: "ArcanePushT4"
+upgrade_costs:
+  2:
+    mana_crystal: 4
+  3:
+    mana_crystal: 10
+    void_mushroom: 3
+  4:
+    mana_crystal: 18
+    phoenix_feather: 3

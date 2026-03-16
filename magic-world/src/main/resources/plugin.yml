@@ -1,0 +1,8 @@
+name: MagicWorld
+version: ${version}
+main: gg.magic.academy.world.MagicWorld
+api-version: '1.21'
+description: World zones, Mana Storm events, and world bosses for Magic Academy RPG.
+authors: [MagicAcademyDev]
+depend: [MagicCore, MagicItems]
+softdepend: [MythicMobs]

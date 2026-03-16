@@ -1,0 +1,178 @@
+﻿# Default Magic Academy items
+# Each entry: itemId -> properties
+
+mana_crystal:
+  id: mana_crystal
+  name: "Mana Crystal"
+  material: AMETHYST_SHARD
+  custom_model_data: 2000
+  color: "#AA00FF"
+  lore:
+    - "A shard of crystallized mana."
+    - "Used in spell upgrades and hideout construction."
+
+void_mushroom:
+  id: void_mushroom
+  name: "Void Mushroom"
+  material: CRIMSON_FUNGUS
+  custom_model_data: 2001
+  color: "#550055"
+  lore:
+    - "Grows in the darkest corners of the dungeons."
+    - "Smells faintly of the void."
+
+phoenix_feather:
+  id: phoenix_feather
+  name: "Phoenix Feather"
+  material: FEATHER
+  custom_model_data: 2002
+  color: "#FF6600"
+  lore:
+    - "Plucked from a fire elemental."
+    - "Still warm to the touch."
+
+ghost_dust:
+  id: ghost_dust
+  name: "Ghost Dust"
+  material: GLOWSTONE_DUST
+  custom_model_data: 2003
+  color: "#CCCCFF"
+  lore:
+    - "The remnant of a vanquished spirit."
+    - "Shimmers with ethereal light."
+
+necromancy_rune:
+  id: necromancy_rune
+  name: "Necromancy Rune"
+  material: PAPER
+  custom_model_data: 1030
+  color: "#55FF55"
+  lore:
+    - "A rune inscribed with forbidden knowledge."
+    - "First discovered by a brave adventurer."
+
+dark_spell_tome:
+  id: dark_spell_tome
+  name: "Dark Spell Tome"
+  material: BOOK
+  custom_model_data: 3001
+  color: "#550000"
+  lore:
+    - "A tome recovered from the Lich's library."
+    - "Contains the secrets of shadow magic."
+
+# Rune items (these match the rune definitions in runes/*.yml)
+fire_element:
+  id: fire_element
+  name: "Fire Rune"
+  material: PAPER
+  custom_model_data: 1001
+  color: "#FF4400"
+  lore:
+    - "Element Rune"
+    - "Imbues a spell with fire energy."
+
+ice_element:
+  id: ice_element
+  name: "Ice Rune"
+  material: PAPER
+  custom_model_data: 1002
+  color: "#00AAFF"
+  lore:
+    - "Element Rune"
+    - "Imbues a spell with ice energy."
+
+arcane_element:
+  id: arcane_element
+  name: "Arcane Rune"
+  material: PAPER
+  custom_model_data: 1003
+  color: "#AA00FF"
+  lore:
+    - "Element Rune"
+    - "Imbues a spell with raw arcane energy."
+
+projectile_shape:
+  id: projectile_shape
+  name: "Projectile Rune"
+  material: PAPER
+  custom_model_data: 1010
+  color: "#FFFFFF"
+  lore:
+    - "Shape Rune"
+    - "Shapes a spell into a flying projectile."
+
+wave_shape:
+  id: wave_shape
+  name: "Wave Rune"
+  material: PAPER
+  custom_model_data: 1011
+  color: "#FFFFFF"
+  lore:
+    - "Shape Rune"
+    - "Shapes a spell into a spreading wave."
+
+nova_shape:
+  id: nova_shape
+  name: "Nova Rune"
+  material: PAPER
+  custom_model_data: 1012
+  color: "#FFFFFF"
+  lore:
+    - "Shape Rune"
+    - "Shapes a spell into an area burst."
+
+slow_effect:
+  id: slow_effect
+  name: "Slow Rune"
+  material: PAPER
+  custom_model_data: 1020
+  color: "#AAAAFF"
+  lore:
+    - "Effect Rune"
+    - "Adds a slowing effect to a spell."
+
+shield_break_effect:
+  id: shield_break_effect
+  name: "Shield Break Rune"
+  material: PAPER
+  custom_model_data: 1021
+  color: "#FFAAFF"
+  lore:
+    - "Effect Rune"
+    - "Adds a shielding effect to a spell."
+
+none_effect:
+  id: none_effect
+  name: "Null Rune"
+  material: PAPER
+  custom_model_data: 1022
+  color: "#888888"
+  lore:
+    - "Effect Rune"
+    - "No additional effect - pure form."
+
+# UI items (resource pack backgrounds)
+ui_spellbook_bg:
+  id: ui_spellbook_bg
+  name: " "
+  material: BLACK_STAINED_GLASS_PANE
+  custom_model_data: 9001
+  color: "#222222"
+  lore: []
+
+ui_spellbook_divider:
+  id: ui_spellbook_divider
+  name: " "
+  material: GRAY_STAINED_GLASS_PANE
+  custom_model_data: 9002
+  color: "#2C2C2C"
+  lore: []
+
+ui_hideout_bg:
+  id: ui_hideout_bg
+  name: " "
+  material: BLACK_STAINED_GLASS_PANE
+  custom_model_data: 9003
+  color: "#223322"
+  lore: []

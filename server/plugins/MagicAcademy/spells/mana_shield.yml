@@ -1,0 +1,35 @@
+id: mana_shield
+name: "Mana Shield"
+element: ARCANE
+shape: NOVA
+effect: SHIELD_BREAK
+tiers:
+  1:
+    description: "Conjures a barrier that absorbs the next hit."
+    mana_cost: 20
+    cooldown_ms: 8000
+    mythicmobs_skill: "ManaShieldT1"
+  2:
+    description: "Absorbs 2 hits before breaking."
+    mana_cost: 25
+    cooldown_ms: 7000
+    mythicmobs_skill: "ManaShieldT2"
+  3:
+    description: "Reflects 25% of absorbed damage back at the attacker."
+    mana_cost: 30
+    cooldown_ms: 6500
+    mythicmobs_skill: "ManaShieldT3"
+  4:
+    description: "Shield detonates on break, stunning nearby enemies."
+    mana_cost: 38
+    cooldown_ms: 6000
+    mythicmobs_skill: "ManaShieldT4"
+upgrade_costs:
+  2:
+    mana_crystal: 5
+  3:
+    mana_crystal: 12
+    void_mushroom: 4
+  4:
+    mana_crystal: 20
+    ghost_dust: 3

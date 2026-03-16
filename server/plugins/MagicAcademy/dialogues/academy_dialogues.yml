@@ -1,0 +1,60 @@
+headmaster_intro:
+  start: welcome
+  nodes:
+    welcome:
+      text: "Welcome to the Magic Academy, young mage. I am Headmaster Aldric. Your training begins now."
+      options:
+        - label: "What should I do first?"
+          next: first_steps
+        - label: "Tell me about the Academy."
+          next: about_academy
+        - label: "Goodbye."
+          next: farewell
+    first_steps:
+      text: "Visit the Rune Master to learn how spells are crafted from runes. Then seek the Dungeon Keeper when you are ready to test your power."
+      options:
+        - label: "Understood. Thank you."
+          next: farewell
+    about_academy:
+      text: "The Magic Academy has trained mages for a thousand years. Five ranks await you: Student, Apprentice, Mage, Master Mage, and the legendary Archmage."
+      options:
+        - label: "How do I advance my rank?"
+          next: rank_info
+        - label: "That is all I needed. Farewell."
+          next: farewell
+    rank_info:
+      text: "Clear dungeons, master spells, complete research, and pass the trials set by Trialmaster Senna. Prove yourself worthy and the next rank shall be yours."
+      options:
+        - label: "I will. Farewell."
+          next: farewell
+    farewell:
+      text: "May your mana never run dry, young mage."
+      action: close
+
+rune_master_intro:
+  start: greeting
+  nodes:
+    greeting:
+      text: "Ah, a curious student approaches. I am Vex, master of runes. The secrets of spell crafting lie in the combination of three runes: Element, Shape, and Effect."
+      options:
+        - label: "How do I combine runes?"
+          next: combining
+        - label: "What is a discovery?"
+          next: discovery
+        - label: "Farewell."
+          next: farewell
+    combining:
+      text: "Bring one of each rune type to a crafting table. Place them together and the magic will do the rest. Some combinations are known — others you must discover yourself."
+      options:
+        - label: "What about unknown combinations?"
+          next: discovery
+        - label: "I understand. Farewell."
+          next: farewell
+    discovery:
+      text: "When a mage finds a new combination never tried before — a new spell is born. Their name is recorded in the Academy's ledger forever. Seek the unknown!"
+      options:
+        - label: "I will experiment. Farewell."
+          next: farewell
+    farewell:
+      text: "Experiment boldly, mage. The greatest discoveries await."
+      action: close

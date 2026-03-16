@@ -1,0 +1,8 @@
+﻿pack:
+  name: MagicAcademy
+  format: 34
+  description: "Magic Academy Resource Pack"
+  url: "http://192.168.1.206:8000/MagicAcademy.zip"
+  required: true
+  prompt: "Magic Academy Resource Pack"
+

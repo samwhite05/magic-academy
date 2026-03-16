@@ -1,0 +1,34 @@
+name: MagicSpells
+version: ${version}
+main: gg.magic.academy.spells.MagicSpells
+api-version: '1.21'
+description: Rune crafting, spell execution, and loadout system for Magic Academy RPG.
+authors: [MagicAcademyDev]
+depend: [MagicCore, MagicItems]
+softdepend: [MythicMobs]
+commands:
+  spellbook:
+    description: Open your spell loadout menu.
+    usage: /spellbook
+    permission: magic.spellbook.use
+    permission-message: ""
+  spellupgrade:
+    description: Upgrade the spell in your current spell slot.
+    usage: /spellupgrade
+    permission: magic.spellupgrade.use
+    permission-message: ""
+  discoveries:
+    description: Open the spell discoveries browser.
+    usage: /discoveries
+    permission: magic.discoveries.use
+    permission-message: ""
+permissions:
+  magic.spellbook.use:
+    description: Allows players to open their spell loadout.
+    default: true
+  magic.spellupgrade.use:
+    description: Allows players to upgrade equipped spells.
+    default: true
+  magic.discoveries.use:
+    description: Allows players to browse spell discoveries.
+    default: true

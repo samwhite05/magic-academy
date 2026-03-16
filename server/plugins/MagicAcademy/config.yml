@@ -1,0 +1,19 @@
+# MagicCore configuration
+
+database:
+  # "sqlite" for local dev, "mysql" for production
+  mode: sqlite
+
+  # MySQL settings (only used when mode: mysql)
+  host: localhost
+  port: 3306
+  name: magic_academy
+  user: root
+  password: ""
+
+mana:
+  regen_amount: 5        # mana restored per regen tick
+  regen_interval_ticks: 20
+
+crafting:
+  rate_limit_per_minute: 10  # max rune crafts per player per minute (anti-griefing)

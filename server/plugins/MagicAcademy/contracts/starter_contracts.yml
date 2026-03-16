@@ -1,0 +1,100 @@
+# Starter contracts — given by NPCs via dialogue or taken from the Contract Board.
+# Objective types: KILL_MOB | COMPLETE_DUNGEON | CAST_SPELL
+# For KILL_MOB: target is the Bukkit EntityType name (e.g. ZOMBIE, SKELETON, CREEPER)
+# For COMPLETE_DUNGEON: target is the dungeon YAML id
+# For CAST_SPELL: target is the spell YAML id
+
+zombie_slayer:
+  name: "Zombie Slayer"
+  description: "The ruins are overrun. Clear them out."
+  rarity: COMMON
+  objectives:
+    - type: KILL_MOB
+      target: ZOMBIE
+      required: 20
+      label: "Kill zombies"
+  rewards:
+    items:
+      fire_element_rune: 2
+    mana: 50
+
+skeleton_patrol:
+  name: "Skeleton Patrol"
+  description: "Bones rattle in the ancient halls. Silence them."
+  rarity: COMMON
+  objectives:
+    - type: KILL_MOB
+      target: SKELETON
+      required: 15
+      label: "Kill skeletons"
+  rewards:
+    items:
+      projectile_shape_rune: 2
+    mana: 50
+
+ruins_delver:
+  name: "Ruins Delver"
+  description: "Explore the Wizard Ruins and return victorious."
+  rarity: RARE
+  objectives:
+    - type: COMPLETE_DUNGEON
+      target: wizard_ruins
+      required: 1
+      label: "Complete Wizard Ruins"
+  rewards:
+    items:
+      ice_element_rune: 3
+      none_effect_rune: 2
+    mana: 100
+
+double_delver:
+  name: "Double Delver"
+  description: "A true mage proves themselves twice over."
+  rarity: RARE
+  objectives:
+    - type: COMPLETE_DUNGEON
+      target: wizard_ruins
+      required: 2
+      label: "Complete Wizard Ruins twice"
+  rewards:
+    items:
+      slow_effect_rune: 3
+    mana: 150
+
+spell_practice:
+  name: "Spell Practice"
+  description: "Practice makes perfect. Cast Firebolt repeatedly."
+  rarity: COMMON
+  objectives:
+    - type: CAST_SPELL
+      target: firebolt
+      required: 30
+      label: "Cast Firebolt"
+  rewards:
+    items:
+      arcane_element_rune: 3
+    mana: 75
+
+mage_trial_prep:
+  name: "Mage Trial Preparation"
+  description: "Prove you are ready for the Mage trial."
+  rarity: EPIC
+  objectives:
+    - type: KILL_MOB
+      target: ZOMBIE
+      required: 30
+      label: "Kill zombies"
+    - type: COMPLETE_DUNGEON
+      target: wizard_ruins
+      required: 1
+      label: "Complete Wizard Ruins"
+    - type: CAST_SPELL
+      target: firebolt
+      required: 20
+      label: "Cast Firebolt"
+  rewards:
+    items:
+      arcane_element_rune: 5
+      wave_shape_rune: 3
+      shield_break_effect_rune: 2
+    mana: 200

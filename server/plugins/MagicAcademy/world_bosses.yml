@@ -1,0 +1,28 @@
+# World boss spawn schedule.
+# intervalMinutes: how often this boss spawns (after it is killed / times out)
+# mythicMobId: the MythicMobs mob ID to spawn (must be defined in plugins/MythicMobs/Mobs/)
+# world: the world to spawn in
+# location: x, y, z coordinates
+# prewarnMinutes: minutes before spawn to announce
+
+ruined_colossus:
+  name: "Ruined Colossus"
+  mythicMobId: RuinedColossus
+  world: world
+  location:
+    x: 0
+    y: 64
+    z: 200
+  intervalMinutes: 90
+  prewarnMinutes: 5
+
+storm_warden:
+  name: "Storm Warden"
+  mythicMobId: StormWarden
+  world: world
+  location:
+    x: -300
+    y: 70
+    z: -100
+  intervalMinutes: 120
+  prewarnMinutes: 5

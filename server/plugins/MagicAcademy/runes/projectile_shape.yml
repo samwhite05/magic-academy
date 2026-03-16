@@ -1,0 +1,5 @@
+id: projectile_shape
+name: "Projectile Rune"
+type: SHAPE
+power_tier: 1
+custom_model_data: 1010

@@ -1,0 +1,17 @@
+name: MagicItems
+version: ${version}
+main: gg.magic.academy.items.MagicItems
+api-version: '1.21'
+description: Custom item definitions and loot tables for Magic Academy RPG.
+authors: [MagicAcademyDev]
+depend: [MagicCore]
+commands:
+  magicitem:
+    description: Give yourself a Magic Academy item by id.
+    usage: /magicitem <id|list> [amount]
+    permission: magic.items.admin
+    permission-message: ""
+permissions:
+  magic.items.admin:
+    description: Allows spawning Magic Academy items by id.
+    default: op

@@ -1,0 +1,5 @@
+id: fire_element
+name: "Fire Rune"
+type: ELEMENT
+power_tier: 1
+custom_model_data: 1001

@@ -1,0 +1,5 @@
+id: none_effect
+name: "Null Rune"
+type: EFFECT
+power_tier: 0
+custom_model_data: 1022

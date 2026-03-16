@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/black_stained_glass_pane"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 9001
+      },
+      "model": "magicacademy/item/ui_spellbook_bg"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 9003
+      },
+      "model": "magicacademy/item/ui_hideout_bg"
+    }
+  ]
+}

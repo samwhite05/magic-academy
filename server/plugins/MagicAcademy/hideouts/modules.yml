@@ -1,0 +1,108 @@
+spell_laboratory:
+  name: "Spell Laboratory"
+  description: "Focuses magical energy, boosting spell power and mana capacity."
+  tiers:
+    1:
+      description: "A basic arcane focusing crystal."
+      cost:
+        mana_crystal: 10
+      max_mana_bonus: 20
+      spell_damage_bonus: 0.05
+      mana_regen_bonus: 1
+    2:
+      description: "Improved resonance chamber with etched rune walls."
+      cost:
+        mana_crystal: 20
+        void_mushroom: 8
+      max_mana_bonus: 40
+      spell_damage_bonus: 0.10
+      mana_regen_bonus: 2
+    3:
+      description: "A fully tuned arcane laboratory."
+      cost:
+        mana_crystal: 40
+        phoenix_feather: 5
+        ghost_dust: 3
+      max_mana_bonus: 70
+      spell_damage_bonus: 0.18
+      mana_regen_bonus: 4
+
+alchemy_lab:
+  name: "Alchemy Lab"
+  description: "Enables potion brewing and ingredient refinement."
+  tiers:
+    1:
+      description: "A basic distillation rack."
+      cost:
+        void_mushroom: 12
+      max_mana_bonus: 5
+      spell_damage_bonus: 0.0
+      mana_regen_bonus: 2
+    2:
+      description: "A full alchemy station with ingredient compressor."
+      cost:
+        void_mushroom: 20
+        ghost_dust: 5
+      max_mana_bonus: 10
+      spell_damage_bonus: 0.03
+      mana_regen_bonus: 4
+    3:
+      description: "A master alchemist's workspace."
+      cost:
+        phoenix_feather: 8
+        ghost_dust: 10
+        mana_crystal: 20
+      max_mana_bonus: 20
+      spell_damage_bonus: 0.06
+      mana_regen_bonus: 7
+
+rune_forge:
+  name: "Rune Forge"
+  description: "Allows rune crafting and combination. Unlocks advanced rune patterns."
+  tiers:
+    1:
+      description: "A simple rune inscriber."
+      cost:
+        mana_crystal: 15
+        void_mushroom: 5
+      max_mana_bonus: 0
+      spell_damage_bonus: 0.0
+      mana_regen_bonus: 1
+    2:
+      description: "An enchanted forge with memory crystals."
+      cost:
+        mana_crystal: 30
+        ghost_dust: 8
+      max_mana_bonus: 0
+      spell_damage_bonus: 0.05
+      mana_regen_bonus: 2
+    3:
+      description: "A master rune forge capable of tier 2 rune creation."
+      cost:
+        mana_crystal: 50
+        phoenix_feather: 10
+        ghost_dust: 15
+      max_mana_bonus: 15
+      spell_damage_bonus: 0.08
+      mana_regen_bonus: 3
+
+artifact_display:
+  name: "Artifact Display"
+  description: "A display case that activates the passive effects of placed relics."
+  tiers:
+    1:
+      description: "A simple pedestal. Holds 1 artifact."
+      cost:
+        mana_crystal: 25
+        void_mushroom: 10
+      max_mana_bonus: 0
+      spell_damage_bonus: 0.0
+      mana_regen_bonus: 0
+    2:
+      description: "An enchanted display. Holds 2 artifacts simultaneously."
+      cost:
+        mana_crystal: 50
+        phoenix_feather: 6
+      max_mana_bonus: 0
+      spell_damage_bonus: 0.0
+      mana_regen_bonus: 0

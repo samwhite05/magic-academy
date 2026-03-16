@@ -1,0 +1,5 @@
+id: slow_effect
+name: "Slow Rune"
+type: EFFECT
+power_tier: 1
+custom_model_data: 1020

@@ -1,0 +1,13 @@
+# Rune Combination Recipes
+# Format: element_rune_id:shape_rune_id:effect_rune_id: spell_id
+#
+# These are the KNOWN recipes — players can discover them or find them via experimentation.
+# Unknown combinations trigger the discovery system.
+
+fire_element:projectile_shape:none_effect: firebolt
+arcane_element:nova_shape:shield_break_effect: mana_shield
+arcane_element:wave_shape:none_effect: arcane_push
+ice_element:projectile_shape:slow_effect: ice_spike
+
+# Discoverable (not listed anywhere in-game — players must experiment):
+# fire_element:wave_shape:explosion_effect: frost_wave_variant  (example Phase 2 spell)

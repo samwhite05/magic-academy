@@ -1,0 +1,55 @@
+# Starter artifacts — found in dungeons / world puzzles / boss drops
+# effectId must match a built-in effect in ArtifactEffectRegistry:
+#   minor_mana_boost, major_mana_boost,
+#   minor_spell_power, major_spell_power,
+#   minor_mana_regen, major_mana_regen,
+#   balanced
+
+ember_shard:
+  name: "Ember Shard"
+  source: DUNGEON_SECRET_ROOM
+  effectId: minor_spell_power
+  rarity: COMMON
+  customModelData: 3001
+
+frost_crystal:
+  name: "Frost Crystal"
+  source: BOSS_DROP
+  effectId: minor_mana_boost
+  rarity: RARE
+  customModelData: 3002
+
+void_fragment:
+  name: "Void Fragment"
+  source: WORLD_PUZZLE
+  effectId: minor_mana_regen
+  rarity: COMMON
+  customModelData: 3003
+
+arcane_prism:
+  name: "Arcane Prism"
+  source: DUNGEON_SECRET_ROOM
+  effectId: balanced
+  rarity: RARE
+  customModelData: 3004
+
+lich_heartstone:
+  name: "Lich Heartstone"
+  source: BOSS_DROP
+  effectId: major_mana_boost
+  rarity: EPIC
+  customModelData: 3005
+
+storm_core:
+  name: "Storm Core"
+  source: BOSS_DROP
+  effectId: major_spell_power
+  rarity: EPIC
+  customModelData: 3006
+
+ancient_wellspring:
+  name: "Ancient Wellspring"
+  source: WORLD_PUZZLE
+  effectId: major_mana_regen
+  rarity: LEGENDARY
+  customModelData: 3007

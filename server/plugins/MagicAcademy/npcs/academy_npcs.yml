@@ -1,0 +1,51 @@
+headmaster:
+  id: headmaster
+  name: "§6Headmaster Aldric"
+  world: world
+  location:
+    x: 100
+    y: 64
+    z: 100
+    yaw: 180
+  interaction:
+    type: DIALOGUE
+    target: headmaster_intro
+
+rune_master:
+  id: rune_master
+  name: "§bRune Master Vex"
+  world: world
+  location:
+    x: 115
+    y: 64
+    z: 100
+    yaw: 90
+  interaction:
+    type: DIALOGUE
+    target: rune_master_intro
+
+dungeon_keeper:
+  id: dungeon_keeper
+  name: "§cDungeon Keeper Morg"
+  world: world
+  location:
+    x: 100
+    y: 64
+    z: 115
+    yaw: 0
+  interaction:
+    type: DUNGEON_PORTAL
+    target: wizard_ruins
+
+apprentice_trial_npc:
+  id: apprentice_trial_npc
+  name: "§eTrialmaster Senna"
+  world: world
+  location:
+    x: 90
+    y: 64
+    z: 100
+    yaw: 270
+  interaction:
+    type: RANK_TRIAL
+    target: trial_apprentice_elemental
