@@ -13,3 +13,4 @@ server/cache/
 server/plugins/*/
 !server/plugins/MagicAcademy/
 server/session.lock
+.tools/
