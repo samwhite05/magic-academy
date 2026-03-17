@@ -4,13 +4,12 @@ import gg.magic.academy.core.MagicCore;
 import gg.magic.academy.hideouts.command.HideoutCommand;
 import gg.magic.academy.hideouts.hotbar.HideoutHotbarListener;
 import gg.magic.academy.hideouts.manager.HideoutManager;
-import gg.magic.academy.hideouts.menu.ArtifactDisplayListener;
 import gg.magic.academy.hideouts.menu.ArtifactDisplayMenu;
-import gg.magic.academy.hideouts.menu.ModuleUpgradeListener;
 import gg.magic.academy.hideouts.menu.ModuleUpgradeMenu;
 import gg.magic.academy.hideouts.module.HideoutBuffProvider;
 import gg.magic.academy.hideouts.module.ModuleRegistry;
 import gg.magic.academy.items.MagicItems;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicHideouts extends JavaPlugin {
@@ -32,15 +31,15 @@ public class MagicHideouts extends JavaPlugin {
 
         hideoutManager = new HideoutManager(this, moduleRegistry);
         buffProvider = new HideoutBuffProvider(moduleRegistry);
-        upgradeMenu = new ModuleUpgradeMenu(this, moduleRegistry);
-        artifactDisplayMenu = new ArtifactDisplayMenu(this, MagicItems.get().getArtifactRegistry());
+        upgradeMenu = new ModuleUpgradeMenu(moduleRegistry);
 
-        // Register stat modifier with magic-core
-        MagicCore.get().getStatEngine().registerModifier("hideout_buffs", buffProvider);
+        MagicItems itemsPlugin = (MagicItems) Bukkit.getPluginManager().getPlugin("MagicItems");
+        artifactDisplayMenu = new ArtifactDisplayMenu(itemsPlugin.getArtifactRegistry());
+
+        MagicCore corePlugin = (MagicCore) Bukkit.getPluginManager().getPlugin("MagicCore");
+        corePlugin.getStatEngine().registerModifier("hideout_buffs", buffProvider);
 
         getServer().getPluginManager().registerEvents(hideoutManager, this);
-        getServer().getPluginManager().registerEvents(new ModuleUpgradeListener(upgradeMenu, hideoutManager), this);
-        getServer().getPluginManager().registerEvents(new ArtifactDisplayListener(artifactDisplayMenu), this);
         getServer().getPluginManager().registerEvents(new HideoutHotbarListener(hideoutManager), this);
 
         if (getCommand("hideout") != null) {
@@ -52,11 +51,17 @@ public class MagicHideouts extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        MagicCore.get().getStatEngine().unregisterModifier("hideout_buffs");
+        MagicCore corePlugin = (MagicCore) Bukkit.getPluginManager().getPlugin("MagicCore");
+        if (corePlugin != null) {
+            corePlugin.getStatEngine().unregisterModifier("hideout_buffs");
+        }
         getLogger().info("MagicHideouts disabled.");
     }
 
     public static MagicHideouts get() { return instance; }
+    public static MagicHideouts getInstance() {
+        return (MagicHideouts) Bukkit.getPluginManager().getPlugin("MagicHideouts");
+    }
     public ModuleRegistry getModuleRegistry() { return moduleRegistry; }
     public HideoutManager getHideoutManager() { return hideoutManager; }
     public ArtifactDisplayMenu getArtifactDisplayMenu() { return artifactDisplayMenu; }

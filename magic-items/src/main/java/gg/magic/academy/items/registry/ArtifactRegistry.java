@@ -1,15 +1,14 @@
 package gg.magic.academy.items.registry;
 
+import gg.magic.academy.api.MagicCoreAPI;
 import gg.magic.academy.api.Rarity;
 import gg.magic.academy.api.artifact.ArtifactEffectHandler;
 import gg.magic.academy.api.artifact.ArtifactSource;
 import gg.magic.academy.api.artifact.ArtifactTemplate;
-import gg.magic.academy.core.MagicCore;
-import gg.magic.academy.core.artifact.ArtifactEffectRegistry;
-import gg.magic.academy.core.artifact.ArtifactStatProvider;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -50,8 +49,7 @@ public class ArtifactRegistry {
         File[] files = dir.listFiles((d, n) -> n.endsWith(".yml"));
         if (files == null) return;
 
-        ArtifactEffectRegistry effectReg = MagicCore.get().getArtifactEffectRegistry();
-        ArtifactStatProvider statProvider = MagicCore.get().getArtifactStatProvider();
+        MagicCoreAPI api = (MagicCoreAPI) Bukkit.getPluginManager().getPlugin("MagicCore");
 
         for (File file : files) {
             YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
@@ -78,8 +76,10 @@ public class ArtifactRegistry {
                     templates.put(id, template);
 
                     // Link this artifact to its effect handler
-                    effectReg.get(effectId).ifPresent(handler ->
-                            statProvider.mapArtifact(id, handler));
+                    ArtifactEffectHandler handler = api.getArtifactEffectHandler(effectId);
+                    if (handler != null) {
+                        api.registerArtifactEffect(id, handler);
+                    }
 
                 } catch (Exception e) {
                     plugin.getLogger().log(Level.WARNING, "Failed to load artifact: " + id, e);
@@ -107,8 +107,8 @@ public class ArtifactRegistry {
         lore.add(Component.text("Source: " + template.source().name().replace('_', ' ').toLowerCase())
                 .color(TextColor.color(0x888888)).decoration(TextDecoration.ITALIC, false));
 
-        ArtifactEffectHandler h = MagicCore.get().getArtifactEffectRegistry()
-                .get(template.effectId()).orElse(null);
+        ArtifactEffectHandler h = ((MagicCoreAPI) Bukkit.getPluginManager().getPlugin("MagicCore"))
+                .getArtifactEffectHandler(template.effectId());
         if (h != null) {
             lore.add(Component.empty());
             if (h.getManaBonus() != 0)

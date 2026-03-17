@@ -3,6 +3,7 @@ package gg.magic.academy.world;
 import gg.magic.academy.world.boss.WorldBossScheduler;
 import gg.magic.academy.world.event.ManaStormController;
 import gg.magic.academy.world.zone.ZoneManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicWorld extends JavaPlugin {
@@ -35,6 +36,9 @@ public class MagicWorld extends JavaPlugin {
     }
 
     public static MagicWorld get() { return instance; }
+    public static MagicWorld getInstance() {
+        return (MagicWorld) Bukkit.getPluginManager().getPlugin("MagicWorld");
+    }
     public ZoneManager getZoneManager() { return zoneManager; }
     public ManaStormController getManaStormController() { return manaStormController; }
     public WorldBossScheduler getWorldBossScheduler() { return worldBossScheduler; }

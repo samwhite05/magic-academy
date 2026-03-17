@@ -33,7 +33,7 @@ public class ArtifactPickupListener implements Listener {
         String artifactId = meta.getPersistentDataContainer().get(artifactKey, PersistentDataType.STRING);
         if (artifactId == null || artifactId.isBlank()) return;
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data == null) return;
 
         if (!data.hasArtifact(artifactId)) {

@@ -4,6 +4,7 @@ import gg.magic.academy.npcs.dialogue.DialogueEngine;
 import gg.magic.academy.npcs.npc.NpcManager;
 import gg.magic.academy.npcs.command.DialogueCommand;
 import gg.magic.academy.npcs.command.NpcsCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicNpcs extends JavaPlugin {
@@ -44,6 +45,9 @@ public class MagicNpcs extends JavaPlugin {
     }
 
     public static MagicNpcs get() { return instance; }
+    public static MagicNpcs getInstance() {
+        return (MagicNpcs) Bukkit.getPluginManager().getPlugin("MagicNpcs");
+    }
     public NpcManager getNpcManager() { return npcManager; }
     public DialogueEngine getDialogueEngine() { return dialogueEngine; }
 }

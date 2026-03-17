@@ -61,7 +61,7 @@ public class DungeonInstanceManager implements Listener {
         DungeonTemplate template = templateOpt.get();
 
         // Rank gate check
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data != null) {
             AcademyRank requiredRank = AcademyRank.valueOf(template.requiredRank());
             if (data.getRank().level() < requiredRank.level()) {
@@ -184,7 +184,7 @@ public class DungeonInstanceManager implements Listener {
 
         // Record clears and fire events
         for (Player p : onlinePlayers) {
-            MagicCore.get().getDatabaseManager().recordDungeonClear(
+            MagicCore.getInstance().getDatabaseManager().recordDungeonClear(
                     p.getUniqueId(), instance.getTemplate().id(), instance.getDurationMs());
             plugin.getServer().getPluginManager().callEvent(
                     new DungeonCompleteEvent(p, instance.getTemplate().id(), onlinePlayers, instance.getDurationMs()));

@@ -5,19 +5,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build Commands
 
 All commands run from the `magic-academy/` directory.
+There is no `gradlew` wrapper — use the bundled Gradle and JDK from `.tools/`.
 
 ```bash
-# Build all modules (produces shadow JARs)
-./gradlew shadowJar
+# Set up environment (required every session)
+export JAVA_HOME="$(pwd)/.tools/jdk21/jdk-21.0.10+7"
+export PATH="$JAVA_HOME/bin:$PATH"
+GRADLE="$(pwd)/.tools/gradle-8.11.1/bin/gradle"
 
-# Build a single module
-./gradlew :magic-spells:shadowJar
-
-# Build and deploy to dev server (copy JARs to server/plugins/)
-./gradlew shadowJar && cp */build/libs/*-all.jar server/plugins/
+# Build all modules (produces shadow JARs per module under <module>/build/libs/)
+"$GRADLE" -p . shadowJar
 
 # Clean build
-./gradlew clean shadowJar
+"$GRADLE" -p . clean shadowJar
+
+# Deploy changed JARs to dev server
+cp magic-core/build/libs/magic-core-*-all.jar server/plugins/
+cp magic-spells/build/libs/magic-spells-*-all.jar server/plugins/
+# ...repeat for other changed modules
+
+# Or use the Windows build+deploy script (double-click or run from cmd):
+build-deploy.bat
 ```
 
 No test infrastructure exists — there are no unit or integration tests.
@@ -39,7 +47,12 @@ magic-world/      World zones, mana storms, world boss scheduling
 server/           Dev server (Paper 1.21.4), plugins deploy here
 ```
 
-**Dependency chain:** `api` → `magic-core` → `magic-items` / `magic-npcs` / `magic-hideouts` / `magic-world` → `magic-spells` → `magic-dungeons` → `magic-academy`
+**Actual compile dependencies** (from build.gradle.kts files — the dependency chain in comments may be aspirational):
+- `magic-core` → `api`
+- `magic-items`, `magic-npcs`, `magic-hideouts`, `magic-world` → `api`, `magic-core`
+- `magic-spells` → `api`, `magic-core`
+- `magic-dungeons` → `api`, `magic-core`, `magic-items`, `magic-npcs` (**not** magic-spells)
+- `magic-academy` → `api`, `magic-core`, `magic-npcs`, `magic-dungeons`, `magic-spells`, `magic-hideouts`, `magic-items`
 
 All modules declare `compileOnly(project(":api"))` — the `api` JAR is NOT shaded into plugin JARs to avoid classloader conflicts.
 
@@ -70,6 +83,8 @@ Adding new spells, dungeons, NPCs, etc. requires only YAML — no code changes.
 - **MythicMobs integration**: Used only for mob AI/abilities via reflection and soft-depend. All lifecycle management (spawning, death tracking) is custom.
 - **LuckPerms integration**: Also via reflection / soft-depend in `magic-academy` for rank group assignment.
 - **Item identity**: Custom items identified by PDC tag `magic:item_id`, not display names.
+- **Custom model data (CMD)**: Resource pack textures are applied via `setCustomModelData`. Ranges: runes 1001–1030, materials 2000–2010, spell tier books 4001–4004, UI items 9001–9003. Always set CMD when building GUI items — `GuiUtil.make(material, cmd, name, lore)`.
+- **Context-sensitive hotbar**: `LobbyHotbarManager` (magic-core) gives lobby shortcuts in the hub world (`world`). `SpellHotbarManager` (magic-spells) takes over in `dungeon_*` and `academy_trials` worlds, placing equipped spell items (BOOK + CMD) in slots 0–3. Spell items carry PDC tag `magic:spell_slot`. Revert to lobby hotbar is automatic on `PlayerChangedWorldEvent` back to `world`.
 
 ### Event-Driven Module Communication
 Custom events decouple modules: `SpellCastEvent`, `RuneDiscoveryEvent`, `RankAdvanceEvent`, `DungeonCompleteEvent`, `NpcDungeonPortalEvent`, `NpcRankTrialEvent`, `DialogueQuestDispatchEvent`. Prefer firing/listening to these events over direct cross-module method calls.

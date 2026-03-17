@@ -176,3 +176,111 @@ ui_hideout_bg:
   custom_model_data: 9003
   color: "#223322"
   lore: []
+
+# Spell Tier Icons (for spell loadout display)
+spell_tier_1:
+  id: spell_tier_1
+  name: "§bSpell Tier I"
+  material: BOOK
+  custom_model_data: 4001
+  color: "#55FFFF"
+  lore:
+    - "Tier 1 Spell"
+
+spell_tier_2:
+  id: spell_tier_2
+  name: "§aSpell Tier II"
+  material: BOOK
+  custom_model_data: 4002
+  color: "#55FF55"
+  lore:
+    - "Tier 2 Spell"
+
+spell_tier_3:
+  id: spell_tier_3
+  name: "§eSpell Tier III"
+  material: BOOK
+  custom_model_data: 4003
+  color: "#FFFF55"
+  lore:
+    - "Tier 3 Spell"
+
+spell_tier_4:
+  id: spell_tier_4
+  name: "§cSpell Tier IV"
+  material: BOOK
+  custom_model_data: 4004
+  color: "#FF5555"
+  lore:
+    - "Tier 4 Spell"
+
+# Additional ingredients (2004+)
+ember_shard:
+  id: ember_shard
+  name: "Ember Shard"
+  material: BLAZE_POWDER
+  custom_model_data: 2004
+  color: "#FF4400"
+  lore:
+    - "A shard of concentrated fire energy."
+    - "Glows with inner heat."
+
+frost_crystal:
+  id: frost_crystal
+  name: "Frost Crystal"
+  material: PRISMARINE_CRYSTALS
+  custom_model_data: 2005
+  color: "#00FFFF"
+  lore:
+    - "A crystal frozen in time."
+    - "Cold to the touch."
+
+void_fragment:
+  id: void_fragment
+  name: "Void Fragment"
+  material: ENDER_PEARL
+  custom_model_data: 2006
+  color: "#440044"
+  lore:
+    - "A piece of pure void energy."
+    - "Whispers to those who hold it."
+
+ancient_wellspring:
+  id: ancient_wellspring
+  name: "Ancient Wellspring"
+  material: HONEY_BOTTLE
+  custom_model_data: 2007
+  color: "#00FFAA"
+  lore:
+    - "Water from an ancient magical source."
+    - "Restores mana when consumed."
+
+storm_core:
+  id: storm_core
+  name: "Storm Core"
+  material: HEART_OF_THE_SEA
+  custom_model_data: 2008
+  color: "#AAAAFF"
+  lore:
+    - "A core of contained lightning."
+    - "Crackles with electric energy."
+
+lich_heartstone:
+  id: lich_heartstone
+  name: "Lich Heartstone"
+  material: HEART_OF_THE_SEA
+  custom_model_data: 2009
+  color: "#FF0000"
+  lore:
+    - "The crystallized heart of a lich."
+    - "Pulses with dark magic."
+
+arcane_crystal:
+  id: arcane_crystal
+  name: "Arcane Crystal"
+  material: AMETHYST_SHARD
+  custom_model_data: 2010
+  color: "#AA00FF"
+  lore:
+    - "A pure crystal of arcane energy."
+    - "Used in advanced crafting."

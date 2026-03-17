@@ -1,8 +1,10 @@
 package gg.magic.academy.hotbar;
 
+import gg.magic.academy.MagicAcademyPlugin;
 import gg.magic.academy.api.player.MagicPlayerData;
 import gg.magic.academy.contract.ContractBoardMenu;
-import gg.magic.academy.core.MagicCore;
+import gg.magic.academy.core.player.PlayerDataManager;
+import gg.magic.academy.core.stat.StatEngine;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.NamespacedKey;
@@ -46,14 +48,16 @@ public class AcademyHotbarListener implements Listener {
     }
 
     private void showProfile(Player player) {
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        PlayerDataManager pdm = (PlayerDataManager) MagicAcademyPlugin.getCoreAPI().getPlayerDataManager();
+        MagicPlayerData data = pdm.get(player);
         if (data == null) return;
 
         player.sendMessage(Component.text(""));
         player.sendMessage(Component.text("§8§m──────────────────────────────"));
         player.sendMessage(Component.text("§6✦ §eProfile: §f" + player.getName()));
         player.sendMessage(Component.text("§6  Rank: §e" + data.getRank().name().replace('_', ' ')));
-        int maxMana = MagicCore.get().getStatEngine().computeMaxMana(data);
+        StatEngine statEngine = (StatEngine) MagicAcademyPlugin.getCoreAPI().getStatEngine();
+        int maxMana = statEngine.computeMaxMana(data);
         player.sendMessage(Component.text("§6  Mana: §b" + data.getMana() + " §7/ §b" + maxMana));
         player.sendMessage(Component.text("§6  Spells owned: §e" + data.getSpellTiers().size()));
         player.sendMessage(Component.text("§6  Artifacts: §e" + data.getOwnedArtifacts().size()

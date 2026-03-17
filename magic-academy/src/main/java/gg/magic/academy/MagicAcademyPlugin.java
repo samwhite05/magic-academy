@@ -1,6 +1,6 @@
 package gg.magic.academy;
 
-import gg.magic.academy.contract.ContractBoardListener;
+import gg.magic.academy.api.MagicCoreAPI;
 import gg.magic.academy.contract.ContractBoardMenu;
 import gg.magic.academy.contract.ContractCommand;
 import gg.magic.academy.contract.ContractManager;
@@ -9,6 +9,7 @@ import gg.magic.academy.hotbar.AcademyHotbarListener;
 import gg.magic.academy.npcs.npc.NpcRankTrialEvent;
 import gg.magic.academy.rank.RankManager;
 import gg.magic.academy.trial.TrialManager;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -35,12 +36,10 @@ public class MagicAcademyPlugin extends JavaPlugin implements Listener {
         contractRegistry.loadAll();
 
         contractManager = new ContractManager(this, contractRegistry);
-        contractBoardMenu = new ContractBoardMenu(this, contractManager);
+        contractBoardMenu = new ContractBoardMenu(contractManager);
 
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(contractManager, this);
-        getServer().getPluginManager().registerEvents(
-                new ContractBoardListener(contractBoardMenu, contractManager), this);
         getServer().getPluginManager().registerEvents(
                 new AcademyHotbarListener(contractBoardMenu), this);
 
@@ -66,6 +65,12 @@ public class MagicAcademyPlugin extends JavaPlugin implements Listener {
     }
 
     public static MagicAcademyPlugin get() { return instance; }
+    public static MagicAcademyPlugin getInstance() {
+        return (MagicAcademyPlugin) Bukkit.getPluginManager().getPlugin("MagicAcademy");
+    }
+    public static MagicCoreAPI getCoreAPI() {
+        return (MagicCoreAPI) Bukkit.getPluginManager().getPlugin("MagicCore");
+    }
     public RankManager getRankManager() { return rankManager; }
     public TrialManager getTrialManager() { return trialManager; }
     public ContractManager getContractManager() { return contractManager; }

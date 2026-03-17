@@ -104,6 +104,76 @@ public class NpcManager implements Listener {
         spawnedEntities.clear();
     }
 
+    public void spawn(String npcId) {
+        NpcDefinition def = definitions.get(npcId);
+        if (def != null) {
+            spawn(def);
+        }
+    }
+
+    public void updateNPCLocation(String npcId, Location newLoc) {
+        NpcDefinition def = definitions.get(npcId);
+        if (def == null) return;
+
+        // Despawn if already spawned
+        for (var entry : spawnedEntities.entrySet()) {
+            if (entry.getValue().equals(npcId)) {
+                Entity entity = Bukkit.getEntity(entry.getKey());
+                if (entity != null) entity.remove();
+                spawnedEntities.remove(entry.getKey());
+                break;
+            }
+        }
+
+        // Update definition
+        NpcDefinition updated = new NpcDefinition(
+                def.id(),
+                def.name(),
+                newLoc.getWorld().getName(),
+                newLoc.getX(),
+                newLoc.getY(),
+                newLoc.getZ(),
+                newLoc.getYaw(),
+                def.interactionType(),
+                def.interactionTarget()
+        );
+        definitions.put(npcId, updated);
+
+        // Save to file
+        saveNPCLocation(npcId, updated);
+
+        // Respawn
+        spawn(updated);
+    }
+
+    private void saveNPCLocation(String npcId, NpcDefinition def) {
+        File dir = plugin.getDataFolder().getParentFile().getParentFile();
+        File npcFile = new File(dir, "plugins/MagicAcademy/npcs/academy_npcs.yml");
+        if (!npcFile.exists()) return;
+
+        YamlConfiguration cfg = YamlConfiguration.loadConfiguration(npcFile);
+        if (cfg.contains(npcId)) {
+            cfg.set(npcId + ".world", def.worldName());
+            cfg.set(npcId + ".location.x", def.x());
+            cfg.set(npcId + ".location.y", def.y());
+            cfg.set(npcId + ".location.z", def.z());
+            cfg.set(npcId + ".location.yaw", def.yaw());
+            try {
+                cfg.save(npcFile);
+            } catch (Exception e) {
+                plugin.getLogger().log(Level.WARNING, "Failed to save NPC location", e);
+            }
+        }
+    }
+
+    public NpcDefinition getNPC(String id) {
+        return definitions.get(id);
+    }
+
+    public Collection<NpcDefinition> getAllNPCs() {
+        return definitions.values();
+    }
+
     @EventHandler
     public void onInteract(PlayerInteractEntityEvent event) {
         Entity entity = event.getRightClicked();

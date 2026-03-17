@@ -91,9 +91,9 @@ public class RoomController {
         player.sendMessage(Component.text("✦ Treasure Room — Claim your reward!")
                 .color(TextColor.color(0xFFFF55)));
 
-        if (!room.lootTableId().isEmpty() && MagicItems.get() != null) {
-            MagicItems.get().getLootTableRegistry().get(room.lootTableId()).ifPresent(lootTable -> {
-                var items = lootTable.roll(MagicItems.get().getItemRegistry(), rng);
+        if (!room.lootTableId().isEmpty() && MagicItems.getInstance() != null) {
+            MagicItems.getInstance().getLootTableRegistry().get(room.lootTableId()).ifPresent(lootTable -> {
+                var items = lootTable.roll(MagicItems.getInstance().getItemRegistry(), rng);
                 for (var item : items) {
                     player.getInventory().addItem(item);
                 }

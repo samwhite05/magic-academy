@@ -1,7 +1,8 @@
 package gg.magic.academy.trial;
 
+import gg.magic.academy.MagicAcademyPlugin;
 import gg.magic.academy.api.player.MagicPlayerData;
-import gg.magic.academy.core.MagicCore;
+import gg.magic.academy.core.player.PlayerDataManager;
 import gg.magic.academy.rank.RankManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
@@ -37,7 +38,8 @@ public class TrialManager {
             return;
         }
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        PlayerDataManager pdm = (PlayerDataManager) MagicAcademyPlugin.getCoreAPI().getPlayerDataManager();
+        MagicPlayerData data = pdm.get(player);
         if (data == null) return;
 
         if (!rankManager.meetsPreTrialRequirements(player, data)) return;
@@ -91,7 +93,8 @@ public class TrialManager {
         if (!activeTrials.containsKey(player.getUniqueId())) return;
         activeTrials.remove(player.getUniqueId());
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        PlayerDataManager pdm = (PlayerDataManager) MagicAcademyPlugin.getCoreAPI().getPlayerDataManager();
+        MagicPlayerData data = pdm.get(player);
         if (data == null) return;
 
         player.sendMessage(Component.text("✦ Trial complete! You have proven yourself worthy.")

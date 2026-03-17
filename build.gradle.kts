@@ -43,6 +43,7 @@ subprojects {
             if (project.name != "magic-core") {
                 minimize()
             }
+            relocate("com.zaxxer.hikari", "gg.magic.academy.libs.hikari")
         }
 
         tasks.named("build") {

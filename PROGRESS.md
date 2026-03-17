@@ -1,6 +1,6 @@
 ﻿# Magic Academy RPG -- Build Progress
 
-**Last updated:** 2026-03-14 (session 2)
+**Last updated:** 2026-03-17 (session 5)
 **Server target:** Paper 1.21.4, Java 21
 **Build system:** Gradle 8.11.1 multi-module, all JARs produced via Shadow (GradleUp Shadow plugin)
 **Root project:** `magic-academy/` (this folder)
@@ -48,18 +48,13 @@ Solo-first Magic Academy RPG Minecraft server. Design docs live at:
 - Lobby schematic copied to `magic-academy/server/schematics/lobby.schematic`
 
 ### Build / Dependency Fixes
-- Switched inter-module deps to `compileOnly` to avoid shading MagicCore into other plugins
-- Fixed `DungeonTemplateLoader` generic parsing (Map<?, ?> to typed reads)
-- Fixed `RuneCraftingHandler` crafting matrix handling
-- Implemented `/magic_dialogue` command handler
-- Implemented spell loadout click handler and PDC-based spell id tagging
-- Fixed spell cooldown remaining calculation/message in `SpellExecutor`
-- Added `/spellupgrade` command (upgrades equipped spell in held slot 0-3)
-- Switched non-core modules to `compileOnly` for `:api` to avoid classloader conflicts
-- Disabled Shadow minimize for `magic-core` so API classes remain available to dependents
-- Added `/hideout leave` subcommand to return to hub
-- Added `/npcs` admin command for spawn/reload/despawn/list
-- Added auto-save startup call in `MagicCore`
+- Switched inter-module deps to `implementation` so API classes are shaded into each plugin JAR
+- Fixed classloader issues: all plugins use `getInstance()` instead of static `get()` to get plugin instances via Bukkit PluginManager
+- Created `MagicCoreAPI` interface in api module for cross-plugin communication
+- Added HikariCP relocation in build.gradle.kts to avoid conflicts
+- Removed SQLite relocation (causes UnsatisfiedLinkError with native libraries)
+- Fixed resource-pack-prompt JSON format in server.properties
+- build-deploy.ps1 now cleans old JARs before deploying, does not copy api JAR
 
 ### Module: `api` (shared, no plugin.yml)
 Location: [api/src/main/java/gg/magic/academy/api/](api/src/main/java/gg/magic/academy/api/)
@@ -68,6 +63,12 @@ All interfaces and data types other modules import from here:
 
 | File | Purpose |
 |---|---|
+| `MagicCoreAPI.java` | Interface implemented by MagicCore for cross-plugin access to database, player data, stat engine, artifact effects |
+| `PluginAPI.java` | Generic interface for plugin instance access |
+| `PluginAccess.java` | Utility class for safely getting plugin instances via Bukkit PluginManager |
+| `gui/SimpleGui.java` | Custom lightweight inventory GUI - implements InventoryHolder, supports click handlers per slot |
+| `gui/PagedGui.java` | Paginated GUI (5 rows, 36 item slots, navigation row), built on SimpleGui |
+| `gui/GuiUtil.java` | Utility for building GUI items (name, lore, filler, glow) |
 | `AcademyRank.java` | Enum: STUDENT->APPRENTICE->MAGE->MASTER_MAGE->ARCHMAGE with `.next()` and `.level()` |
 | `Rarity.java` | Enum: COMMON/RARE/EPIC/LEGENDARY with Adventure TextColor |
 | `element/Element.java` | Enum: FIRE/ICE/ARCANE/LIGHTNING/SHADOW |
@@ -96,6 +97,7 @@ Location: [magic-core/src/main/java/gg/magic/academy/core/](magic-core/src/main/
 | `mana/ManaSystem.java` | Mana regen tick (5/sec), `consumeMana()` with action bar feedback, mana bar display |
 | `stat/StatEngine.java` | Aggregates `StatModifier` implementations. Methods: `computeMaxMana()`, `computeSpellDamageMultiplier()`, `computeManaRegenBonus()` |
 | `stat/StatModifier.java` | Interface for other modules to inject stat bonuses without hard deps |
+| `gui/GuiListener.java` | Global listener for InventoryClickEvent/InventoryDragEvent - routes to SimpleGui instances |
 | `resources/config.yml` | Database mode, mana regen config, crafting rate limit |
 
 ### Module: `magic-items`
@@ -218,7 +220,7 @@ All under [server/plugins/MagicAcademy/](server/plugins/MagicAcademy/)
 | `dungeons/crystal_caverns.yml` | T2 dungeon, APPRENTICE rank, 6 rooms, Crystal Dragonling boss |
 | `loot_tables/ruins_treasure.yml` | 4 rolls, 0.85 chance, 6 entry types |
 | `loot_tables/crystal_treasure.yml` | 4 rolls, 0.9 chance, 6 entry types |
-| `npcs/academy_npcs.yml` | 4 NPCs: Headmaster, Rune Master, Dungeon Keeper, Trialmaster |
+| `npcs/academy_npcs.yml` | 4 NPCs near spawn: Headmaster (0,64,3), Rune Master (4,64,0), Dungeon Keeper (-4,64,0), Trialmaster (0,64,-3) |
 | `dialogues/academy_dialogues.yml` | Headmaster + Rune Master branching dialogue trees |
 | `hideouts/modules.yml` | 4 modules: Spell Lab (T3), Alchemy Lab (T3), Rune Forge (T3), Artifact Display (T2) |
 | `academy/ranks.yml` | Gates for APPRENTICE/MAGE/MASTER_MAGE/ARCHMAGE |
@@ -264,7 +266,13 @@ All under [server/plugins/MagicAcademy/](server/plugins/MagicAcademy/)
 
 ### Priority 4 -- Infrastructure
 
-- [ ] **MythicMobs YAML for all boss IDs** -- The dungeons reference: `LichForgottenLibrary`, `RuinsGolem`, `RuinsZombieMage`, `CrystalGolem`, `CrystalBat`, `CrystalKnight`, `CrystalDragonling`. Trial refs: `trial_apprentice_elemental`, `trial_mage_dual`, `trial_master_arcane_titan`, `trial_archmage_lich_council`. All of these need corresponding MythicMobs mob + skill YAML files in `plugins/MythicMobs/`.
+- [x] **Custom GUI System** -- Replaced triumph-gui with lightweight custom implementation in api module: SimpleGui, PagedGui, GuiUtil. GuiListener in magic-core handles click events globally.
+- [x] **MythicMobs YAML for all boss IDs** -- Created `server/plugins/MythicMobs/mobs.yml` and `skills.yml` with all dungeon and trial bosses
+- [x] **triumph-gui Migration** -- Replaced manual inventory handling with triumph-gui library for all menus
+- [x] **NPC Command Upgrades** -- Enhanced `/npcs` command with list, info, spawn, tp, setspawn subcommands
+- [x] **Build/Deploy Script** -- Created `build-deploy.ps1` for one-command build and deploy
+- [x] **Oraxen Integration** -- Set up Oraxen config for custom spell icons (`magic_spell_1-4`)
+- [x] **GUI Custom Textures** -- Updated SpellLoadoutMenu and DiscoveriesMenu to use Oraxen item API
 - [ ] **Resource pack** -- Custom model data IDs are assigned (1001-1030 for runes, 2000-2003 for ingredients). Need JSON model files in `server/resource_pack/assets/minecraft/models/item/`. Server must be configured to serve the resource pack.
 - [ ] **`academy_trials` world** -- `TrialManager` teleports to a world named `academy_trials`. This world must exist on the server (hand-built arena or Multiverse-generated).
 - [ ] **Dungeon template worlds** -- `DungeonInstanceManager` copies from `plugins/MagicAcademy/dungeon_worlds/<dungeonId>/`. These prefab world folders need to be built by map builders and placed there.

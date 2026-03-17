@@ -6,6 +6,7 @@ import gg.magic.academy.dungeons.party.PartyCommand;
 import gg.magic.academy.dungeons.party.PartyManager;
 import gg.magic.academy.dungeons.template.DungeonTemplateLoader;
 import gg.magic.academy.npcs.npc.NpcDungeonPortalEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -57,6 +58,9 @@ public class MagicDungeons extends JavaPlugin implements Listener {
     }
 
     public static MagicDungeons get() { return instance; }
+    public static MagicDungeons getInstance() {
+        return (MagicDungeons) Bukkit.getPluginManager().getPlugin("MagicDungeons");
+    }
     public DungeonTemplateLoader getTemplateLoader() { return templateLoader; }
     public DungeonInstanceManager getInstanceManager() { return instanceManager; }
     public PartyManager getPartyManager() { return partyManager; }

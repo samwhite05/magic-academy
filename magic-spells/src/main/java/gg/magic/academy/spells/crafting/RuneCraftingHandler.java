@@ -85,14 +85,14 @@ public class RuneCraftingHandler implements Listener {
         event.setCancelled(true);
 
         // Rate limit check
-        DatabaseManager db = MagicCore.get().getDatabaseManager();
+        DatabaseManager db = MagicCore.getInstance().getDatabaseManager();
         if (!db.checkCraftingRateLimit(player.getUniqueId(), MAX_CRAFTS_PER_MINUTE)) {
             player.sendMessage(Component.text("You're crafting too fast. Slow down!")
                     .color(TextColor.color(0xFF5555)));
             return;
         }
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data == null) return;
 
         String elementId = element.id();

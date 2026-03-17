@@ -5,6 +5,7 @@ import gg.magic.academy.items.listener.ArtifactPickupListener;
 import gg.magic.academy.items.loot.LootTableRegistry;
 import gg.magic.academy.items.registry.ArtifactRegistry;
 import gg.magic.academy.items.registry.ItemRegistry;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MagicItems extends JavaPlugin {
@@ -44,6 +45,9 @@ public class MagicItems extends JavaPlugin {
     }
 
     public static MagicItems get() { return instance; }
+    public static MagicItems getInstance() {
+        return (MagicItems) Bukkit.getPluginManager().getPlugin("MagicItems");
+    }
     public ItemRegistry getItemRegistry() { return itemRegistry; }
     public LootTableRegistry getLootTableRegistry() { return lootTableRegistry; }
     public ArtifactRegistry getArtifactRegistry() { return artifactRegistry; }

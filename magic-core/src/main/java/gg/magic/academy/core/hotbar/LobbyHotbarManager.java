@@ -50,7 +50,12 @@ public class LobbyHotbarManager implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
-        giveHotbar(event.getPlayer());
+        // Only give lobby hotbar if player is in the hub world.
+        // Combat worlds (dungeons, trials) have their own hotbar given by SpellHotbarManager.
+        String world = event.getPlayer().getWorld().getName();
+        if (HUB_WORLD.equals(world)) {
+            giveHotbar(event.getPlayer());
+        }
     }
 
     @EventHandler

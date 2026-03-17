@@ -9,6 +9,30 @@
         "custom_model_data": 3001
       },
       "model": "magicacademy/item/dark_spell_tome"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 4001
+      },
+      "model": "magicacademy/item/spell_tier_1"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 4002
+      },
+      "model": "magicacademy/item/spell_tier_2"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 4003
+      },
+      "model": "magicacademy/item/spell_tier_3"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 4004
+      },
+      "model": "magicacademy/item/spell_tier_4"
     }
   ]
 }

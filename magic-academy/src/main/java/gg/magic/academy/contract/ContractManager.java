@@ -1,9 +1,11 @@
 package gg.magic.academy.contract;
 
+import gg.magic.academy.MagicAcademyPlugin;
+import gg.magic.academy.api.MagicCoreAPI;
 import gg.magic.academy.api.event.DungeonCompleteEvent;
 import gg.magic.academy.api.event.SpellCastEvent;
-import gg.magic.academy.core.MagicCore;
 import gg.magic.academy.core.database.DatabaseManager;
+import gg.magic.academy.core.player.PlayerDataManager;
 import gg.magic.academy.items.MagicItems;
 import gg.magic.academy.npcs.dialogue.DialogueQuestDispatchEvent;
 import net.kyori.adventure.text.Component;
@@ -58,7 +60,7 @@ public class ContractManager implements Listener {
     }
 
     private void loadPlayer(UUID uuid) {
-        DatabaseManager db = MagicCore.get().getDatabaseManager();
+        DatabaseManager db = (DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager();
         List<String> active = db.getActiveContracts(uuid);
         Set<String> activeSet = new HashSet<>(active);
         activeContracts.put(uuid, activeSet);
@@ -79,7 +81,8 @@ public class ContractManager implements Listener {
     private void saveProgress(UUID uuid) {
         Map<String, int[]> playerProgress = progress.get(uuid);
         if (playerProgress == null) return;
-        DatabaseManager db = MagicCore.get().getDatabaseManager();
+
+        DatabaseManager db = (DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager();
         for (Map.Entry<String, int[]> entry : playerProgress.entrySet()) {
             String contractId = entry.getKey();
             int[] prog = entry.getValue();
@@ -106,7 +109,7 @@ public class ContractManager implements Listener {
                     .color(TextColor.color(0xFF5555)));
             return;
         }
-        List<String> completed = MagicCore.get().getDatabaseManager().getCompletedContracts(uuid);
+        List<String> completed = ((DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager()).getCompletedContracts(uuid);
         if (completed.contains(contractId)) {
             player.sendMessage(Component.text("✦ You have already completed that contract.")
                     .color(TextColor.color(0x888888)));
@@ -116,7 +119,7 @@ public class ContractManager implements Listener {
         active.add(contractId);
         int[] arr = new int[template.objectives().size()];
         progress.computeIfAbsent(uuid, k -> new HashMap<>()).put(contractId, arr);
-        MagicCore.get().getDatabaseManager().startContract(uuid, contractId);
+        ((DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager()).startContract(uuid, contractId);
         player.sendMessage(Component.text("✦ Contract accepted: " + template.name())
                 .color(TextColor.color(0x55FF55)));
     }
@@ -127,7 +130,7 @@ public class ContractManager implements Listener {
     }
 
     public boolean isCompleted(UUID uuid, String contractId) {
-        return MagicCore.get().getDatabaseManager().getCompletedContracts(uuid).contains(contractId);
+        return ((DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager()).getCompletedContracts(uuid).contains(contractId);
     }
 
     public Map<String, int[]> getProgress(UUID uuid) {
@@ -180,7 +183,7 @@ public class ContractManager implements Listener {
                     if (!obj.target().equalsIgnoreCase(target)) continue;
                     if (prog[i] < obj.required()) {
                         prog[i]++;
-                        MagicCore.get().getDatabaseManager()
+                        ((DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager())
                                 .setContractProgress(uuid, contractId, i, prog[i]);
                         anyChanged = true;
                         player.sendMessage(Component.text("✦ " + obj.label() + ": "
@@ -205,7 +208,7 @@ public class ContractManager implements Listener {
     }
 
     private void completeContract(Player player, ContractTemplate template) {
-        MagicCore.get().getDatabaseManager().completeContract(player.getUniqueId(), template.id());
+        ((DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager()).completeContract(player.getUniqueId(), template.id());
         progress.getOrDefault(player.getUniqueId(), Map.of()).remove(template.id());
 
         player.sendMessage(Component.text("")); // spacer
@@ -214,7 +217,7 @@ public class ContractManager implements Listener {
 
         // Give item rewards
         for (Map.Entry<String, Integer> entry : template.rewardItems().entrySet()) {
-            MagicItems.get().getItemRegistry().get(entry.getKey(), entry.getValue())
+            MagicItems.getInstance().getItemRegistry().get(entry.getKey(), entry.getValue())
                     .ifPresent(stack -> {
                         player.getInventory().addItem(stack);
                         player.sendMessage(Component.text("  + " + entry.getValue() + "x " + entry.getKey())
@@ -224,7 +227,8 @@ public class ContractManager implements Listener {
 
         // Mana reward
         if (template.rewardMana() > 0) {
-            MagicCore.get().getPlayerDataManager().get(player).restoreMana(template.rewardMana());
+            PlayerDataManager pdm = (PlayerDataManager) MagicAcademyPlugin.getCoreAPI().getPlayerDataManager();
+            pdm.get(player).restoreMana(template.rewardMana());
             player.sendMessage(Component.text("  + " + template.rewardMana() + " mana restored")
                     .color(TextColor.color(0x5599FF)));
         }

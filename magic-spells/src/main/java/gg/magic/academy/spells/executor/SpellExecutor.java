@@ -44,7 +44,7 @@ public class SpellExecutor implements Listener {
 
         event.setCancelled(true); // Don't actually swap
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data == null) return;
 
         String spellId = data.getEquippedSpells().get(heldSlot);
@@ -74,7 +74,7 @@ public class SpellExecutor implements Listener {
         }
 
         // Mana check
-        if (!MagicCore.get().getManaSystem().consumeMana(player, tierData.manaCost())) return;
+        if (!MagicCore.getInstance().getManaSystem().consumeMana(player, tierData.manaCost())) return;
 
         // Fire cancellable event (other plugins can cancel spell casts)
         SpellCastEvent castEvent = new SpellCastEvent(player, data, spell, tier);

@@ -13,4 +13,13 @@ server/cache/
 server/plugins/*/
 !server/plugins/MagicAcademy/
 server/session.lock
+server/libraries/
+server/academy_trials/
+server/MagicAcademy.zip
+server/voidword.zip
+server/resource_pack/*.zip
+server/.console_history
+server/usercache.json
+test_out.png
 .tools/
+server/MagicAcademy.zip

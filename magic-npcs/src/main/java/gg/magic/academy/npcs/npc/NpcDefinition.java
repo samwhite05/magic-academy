@@ -1,5 +1,8 @@
 package gg.magic.academy.npcs.npc;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+
 /**
  * Static definition of an NPC loaded from YAML.
  */
@@ -17,5 +20,9 @@ public record NpcDefinition(
         VENDOR_MENU,
         DUNGEON_PORTAL,
         RANK_TRIAL
+    }
+
+    public Location getLocation() {
+        return new Location(Bukkit.getWorld(worldName), x, y, z, yaw, 0);
     }
 }

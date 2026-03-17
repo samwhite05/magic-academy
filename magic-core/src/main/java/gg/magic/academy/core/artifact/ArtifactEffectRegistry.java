@@ -38,6 +38,14 @@ public class ArtifactEffectRegistry {
         return Optional.ofNullable(effects.get(effectId));
     }
 
+    public ArtifactEffectHandler getHandler(String effectId) {
+        return effects.get(effectId);
+    }
+
+    public java.util.Collection<String> getRegisteredIds() {
+        return effects.keySet();
+    }
+
     // ── helper ───────────────────────────────────────────────────────────────
 
     private static ArtifactEffectHandler effect(int mana, double dmg, int regen) {

@@ -1,9 +1,10 @@
 package gg.magic.academy.rank;
 
+import gg.magic.academy.MagicAcademyPlugin;
 import gg.magic.academy.api.AcademyRank;
 import gg.magic.academy.api.event.RankAdvanceEvent;
 import gg.magic.academy.api.player.MagicPlayerData;
-import gg.magic.academy.core.MagicCore;
+import gg.magic.academy.core.database.DatabaseManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -76,7 +77,7 @@ public class RankManager {
         RankGate gate = gates.get(nextRank);
         if (gate == null) return true; // no gate = free advancement
 
-        var db = MagicCore.get().getDatabaseManager();
+        DatabaseManager db = (DatabaseManager) MagicAcademyPlugin.getCoreAPI().getDatabaseManager();
 
         // Dungeon clears
         for (String dungeonId : gate.requiredDungeonClears()) {

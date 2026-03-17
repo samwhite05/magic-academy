@@ -33,7 +33,7 @@ public class SpellUpgradeCommand implements CommandExecutor {
             return true;
         }
 
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data == null) return true;
 
         String spellId = data.getEquippedSpells().get(heldSlot);

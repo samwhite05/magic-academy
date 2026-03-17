@@ -9,6 +9,12 @@
         "custom_model_data": 2000
       },
       "model": "magicacademy/item/mana_crystal"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2010
+      },
+      "model": "magicacademy/item/arcane_crystal"
     }
   ]
 }

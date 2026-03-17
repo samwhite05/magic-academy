@@ -65,7 +65,7 @@ public class HideoutManager implements Listener {
     }
 
     public boolean upgradeModule(Player player, String moduleId) {
-        MagicPlayerData data = MagicCore.get().getPlayerDataManager().get(player);
+        MagicPlayerData data = MagicCore.getInstance().getPlayerDataManager().get(player);
         if (data == null) return false;
 
         Optional<HideoutModule> moduleOpt = moduleRegistry.get(moduleId);
