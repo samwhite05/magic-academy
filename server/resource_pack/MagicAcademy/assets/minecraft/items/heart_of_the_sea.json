@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/heart_of_the_sea" },
+    "entries": [
+      { "threshold": 2008, "model": { "type": "minecraft:model", "model": "magicacademy:item/storm_core" } },
+      { "threshold": 2009, "model": { "type": "minecraft:model", "model": "magicacademy:item/lich_heartstone" } }
+    ]
+  }
+}

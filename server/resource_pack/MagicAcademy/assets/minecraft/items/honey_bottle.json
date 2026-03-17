@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/honey_bottle" },
+    "entries": [
+      { "threshold": 2007, "model": { "type": "minecraft:model", "model": "magicacademy:item/ancient_wellspring" } }
+    ]
+  }
+}

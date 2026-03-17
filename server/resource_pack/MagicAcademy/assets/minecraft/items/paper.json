@@ -1,0 +1,19 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/paper" },
+    "entries": [
+      { "threshold": 1001, "model": { "type": "minecraft:model", "model": "magicacademy:item/fire_element" } },
+      { "threshold": 1002, "model": { "type": "minecraft:model", "model": "magicacademy:item/ice_element" } },
+      { "threshold": 1003, "model": { "type": "minecraft:model", "model": "magicacademy:item/arcane_element" } },
+      { "threshold": 1010, "model": { "type": "minecraft:model", "model": "magicacademy:item/projectile_shape" } },
+      { "threshold": 1011, "model": { "type": "minecraft:model", "model": "magicacademy:item/wave_shape" } },
+      { "threshold": 1012, "model": { "type": "minecraft:model", "model": "magicacademy:item/nova_shape" } },
+      { "threshold": 1020, "model": { "type": "minecraft:model", "model": "magicacademy:item/slow_effect" } },
+      { "threshold": 1021, "model": { "type": "minecraft:model", "model": "magicacademy:item/shield_break_effect" } },
+      { "threshold": 1022, "model": { "type": "minecraft:model", "model": "magicacademy:item/none_effect" } },
+      { "threshold": 1030, "model": { "type": "minecraft:model", "model": "magicacademy:item/necromancy_rune" } }
+    ]
+  }
+}
